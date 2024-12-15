@@ -1,11 +1,22 @@
 package com.hotel_reservation.basic;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 public class Reservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "guest_id")
     private Guest guest;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
+
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
 

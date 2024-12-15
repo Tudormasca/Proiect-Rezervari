@@ -1,7 +1,13 @@
 package com.hotel_reservation.basic;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Guest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String email;
     private String phoneNumber;

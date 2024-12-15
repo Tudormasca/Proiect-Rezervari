@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel Reservations</title>
+</head>
+<body>
+    <h1>Hotel Reservations</h1>
+
+    <!-- Form to create a new hotel -->
+    <form th:action="@{/api/hotels}" method="post" th:object="${hotel}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <button type="submit">Create Hotel</button>
+    </form>
+
+    <!-- List to display hotels -->
+    <h2>Hotel List</h2>
+    <ul th:if="${hotels}">
+        <li th:each="hotel : ${hotels}">
+            <span th:text="${hotel.name}">Hotel Name</span> -
+            <span th:text="${hotel.address}">Hotel Address</span>
+        </li>
+    </ul>
+    <p th:if="${#lists.isEmpty(hotels)}">No hotels available.</p>
+</body>
+</html>
